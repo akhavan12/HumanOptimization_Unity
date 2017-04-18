@@ -29,6 +29,7 @@ public class FinalSumbit : MonoBehaviour {
 
     void OnMouseDown()
     {
+		Debug.Log ("here");
         minP = ClickTrails.minP;
         maxT = ClickTrails.maxT;
         inters = ClickTrails.inters;

@@ -4,17 +4,11 @@ using UnityEngine.UI;
 
 public class storeTruck : MonoBehaviour {
 	private GameObject sT;
+	public static bool refreshed;
 
 	void Awake(){
 		sT = GameObject.Find ("storeTruck");
-		addRedTruck (gameControll.redTruckNum);
-		gameControll.redTruckNum++;
-		addRedTruck (gameControll.redTruckNum);
-		gameControll.redTruckNum++;
-		addBlueTruck (gameControll.blueTruckNum);
-		gameControll.blueTruckNum++;
-		addBlueTruck (gameControll.blueTruckNum);
-		gameControll.blueTruckNum++;
+	//	initializeValue (RefreshButton.refresh);
 	}
 
 	public void addTruck(int num){
@@ -194,4 +188,33 @@ public class storeTruck : MonoBehaviour {
 			addIm.GetComponent<Image> ().color = newCol;
 		}
 	}
+
+	private void initializeValue(bool bValue){
+		if (!bValue) {
+			addRedTruck (gameControll.redTruckNum);
+			gameControll.redTruckNum++;
+			addRedTruck (gameControll.redTruckNum);
+			gameControll.redTruckNum++;
+			addBlueTruck (gameControll.blueTruckNum);
+			gameControll.blueTruckNum++;
+			addBlueTruck (gameControll.blueTruckNum);
+			gameControll.blueTruckNum++;
+			refreshed = true;
+		}
+	}
+
+
+    public void initializeValue(bool red,bool blue)
+    {
+        if (red)
+        {
+            addRedTruck(gameControll.redTruckNum);
+            gameControll.redTruckNum++;
+        }
+        if (blue)
+        {
+            addBlueTruck(gameControll.blueTruckNum);
+            gameControll.blueTruckNum++;
+        }
+    }
 }

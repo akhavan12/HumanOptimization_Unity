@@ -19,28 +19,32 @@ public class CheckMark : MonoBehaviour {
 
 	//a stack to store all unseen indicator
 	private Stack<GameObject> indiStack=new Stack<GameObject>();
-    private static bool onlyFirstTime = false;
+	public static bool refreshed;
 
 	void Awake(){
-        if (!onlyFirstTime)
-        {
-            addIndicatorAwake(1, 3, false, false, true, 0, 0, 0);
-            addIndicatorAwake(3, 2, false, false, true, 0, 0, 0);
-            addIndicatorAwake(2, 1, false, false, true, 0, 0, 0);
-            addIndicatorAwake(1, 2, false, false, true, 0, 0, 0);
-            addIndicatorAwake(2, 5, false, false, true, 0, 0, 0);
-            addIndicatorAwake(5, 2, false, false, true, 0, 0, 0);
-            addIndicatorAwake(2, 1, false, false, true, 0, 1, 0);
-            //setIndicatorSeen (indiStack);
-            addIndicatorAwake(1, 3, true, false, false, 0, 1, 0);
-            addIndicatorAwake(3, 4, true, false, false, 0, 0, 0);
-            addIndicatorAwake(4, 1, true, false, false, 0, 0, 0);
-            addIndicatorAwake(1, 4, true, false, false, 0, 0, 0);
-            addIndicatorAwake(4, 5, true, false, false, 0, 0, 0);
-            addIndicatorAwake(5, 4, true, false, false, 0, 0, 0);
-            addIndicatorAwake(4, 1, true, false, false, 1, 0, 0);
-            onlyFirstTime = true;
-        }
+  //      if (!gameControll.onlyUpdateAtFirstTimeForCheckMark && !RefreshButton.refresh)
+  //      {
+  //          addIndicatorAwake(1, 3, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(3, 2, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(2, 1, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(1, 2, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(2, 5, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(5, 2, false, false, true, 0, 0, 0);
+  //          addIndicatorAwake(2, 1, false, false, true, 0, 1, 0);
+  //          //setIndicatorSeen (indiStack);
+  //          addIndicatorAwake(1, 3, true, false, false, 0, 1, 0);
+  //          addIndicatorAwake(3, 4, true, false, false, 0, 0, 0);
+  //          addIndicatorAwake(4, 1, true, false, false, 0, 0, 0);
+  //          addIndicatorAwake(1, 4, true, false, false, 0, 0, 0);
+  //          addIndicatorAwake(4, 5, true, false, false, 0, 0, 0);
+  //          addIndicatorAwake(5, 4, true, false, false, 0, 0, 0);
+  //          addIndicatorAwake(4, 1, true, false, false, 1, 0, 0);
+  //          gameControll.onlyUpdateAtFirstTimeForCheckMark = true;
+		//}
+
+		//if (RefreshButton.refresh) {
+		//	refreshed = true;
+		//}
 	}
 		
 
@@ -84,7 +88,7 @@ public class CheckMark : MonoBehaviour {
 	}
 		
 
-	private void addIndicator(int num1,int num2, bool red, bool green, bool blue)
+	public void addIndicator(int num1,int num2, bool red, bool green, bool blue)
 	{
 		string strNode1 = "node" + num1;
 		if (num1 == 1)
@@ -496,7 +500,7 @@ public class CheckMark : MonoBehaviour {
 		}
 	}
 
-	private void addIndicatorAwake(int num1,int num2, bool red, bool green, bool blue,int redNum,int blueNum,int greenNum)
+	public void addIndicatorAwake(int num1,int num2, bool red, bool green, bool blue,int redNum,int blueNum,int greenNum)
 	{
 		string strNode1 = "node" + num1;
 		if (num1 == 1)
@@ -540,6 +544,10 @@ public class CheckMark : MonoBehaviour {
 
 		if (red)
 		{
+			string indiName = "redIndicator1" + num1.ToString () + num2.ToString ();
+			if (GameObject.Find (indiName) != null) {
+				return;
+			}
 			int rn = redNum;
 			if (rn > 1)
 				return;
@@ -645,6 +653,10 @@ public class CheckMark : MonoBehaviour {
 
 		if (green)
 		{
+			string indiName = "greenIndicator1" + num1.ToString () + num2.ToString ();
+			if (GameObject.Find (indiName) != null) {
+				return;
+			}
 			int gn = greenNum;
 			if (gn > 1)
 				return;
@@ -753,6 +765,10 @@ public class CheckMark : MonoBehaviour {
 
 		if (blue)
 		{
+			string indiName = "blueIndicator1" + num1.ToString () + num2.ToString ();
+			if (GameObject.Find (indiName) != null) {
+				return;
+			}
 			int bn = blueNum;
 			if (bn > 1)
 				return;
