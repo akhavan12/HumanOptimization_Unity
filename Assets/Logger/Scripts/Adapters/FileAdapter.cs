@@ -81,7 +81,7 @@ public class FileAdapter : BaseAdapter
 			return;
 		}
 		try {
-          string node_output =WWW.EscapeURL("["+node.ToString().Trim().Replace("\n", " ") + "\n"+"],");
+          string node_output =WWW.EscapeURL(node.ToString().Trim().Replace("\n", " ") + "\n"+",");
 
 		//	m_out.Write(node_output);
 		//	m_out.Flush();
